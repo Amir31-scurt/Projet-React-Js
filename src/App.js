@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Picture from "./components/picture";
+import React, { useEffect, useRef, useState } from "react";
+import Picture from "./components/Pictures";
 /*function App( {titre} ){
     return <h1 className = "text-center text-red-700 text-4xl">{titre}</h1>
 }*/
@@ -7,8 +7,17 @@ import Picture from "./components/picture";
 function App(){
     const [title, setTitle] = useState("Hello World");
     const [show, setShow] = useState(false);
+    const isShowUpdated = useRef(false);
 
     useEffect(() => console.log("Component Mount"), []);
+    useEffect(() =>{
+        if(isShowUpdated.current){
+            console.log("Show Updated");
+        }
+        else{
+            isShowUpdated.current = true;
+        }
+    }, [show])
 
     function handleClick(){
         setShow(!show);
