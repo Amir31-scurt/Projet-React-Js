@@ -23,8 +23,10 @@ export default function Pictures() {
         );
     };
 
+
     function handleImageName(event){
         setImage(event.target.value);
+        
     }
     function NewImages(){
         let Nimage = [...images, image];
@@ -55,10 +57,11 @@ export default function Pictures() {
             <ImageComponent/>
         </div>
         <div className='flex items-center justify-center my-7'>
-            <input type='text' ref={InputToFocus}
-            className='mx-5 w-60 bg-blue-200 border border-blue-600 placeholder-blue-400 text-black focus:ring-blue-500 focus:border-blue-500 text-sm rounded-lg block w-full p-2.5 dark:bg-blue-200 dark:border-blue-600 dark:placeholder-blue-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500'
-            onChange={handleImageName}/>
-            <button type='submit' className='bg-blue-700 py-2 px-3 text-white rounded' onClick={NewImages}>Inserer l'image</button>
+            <input name='inpp' type='text' ref={InputToFocus}
+            className='mx-5 w-60 bg-blue-200 border border-blue-600 placeholder-blue-400 text-black focus:ring-blue-500 focus:border-blue-500 text-sm rounded-lg block w-full p-2.5 
+            dark:bg-blue-200 dark:border-blue-600 dark:placeholder-blue-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            value={image} onChange={handleImageName}/>
+            <button type='submit' className='bg-blue-700 py-2 px-3 text-white rounded' onClick={() => {NewImages(); setImage('');}}>Inserer l'image</button>
         </div>
     </div>
   )
